@@ -30,6 +30,7 @@ module.exports = function(app) {
   app.get('/checks/needingPoll', function(req, res, next) {
     Check
     .needingPoll()
+    .limit(1)
     .select({qos: 0})
     .exec(function(err, checks) {
       if (err) return next(err);
